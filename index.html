@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einstein Synchrony Convention Simulation</title>
+    <meta name="description" content="An interactive physics simulation demonstrating the relativity of simultaneity and the one-way speed of light.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- p5.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    
+    <script>
+    MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    };
+    </script>
+    <!-- MathJax for LaTeX -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="ui-container">
+        <header>
+            <div class="header-title-group">
+                <div>
+                    <h1>One-Way Speed of Light</h1>
+                    <p class="subtitle">The Limits of Empirical Measurement</p>
+                </div>
+                
+                <div class="header-tools">
+                    <div class="tooltip-container">
+                        <button class="info-btn" aria-label="Introduction">Concept</button>
+                        <div class="tooltip-content">
+                            <em>The Synchrony Convention and the One-Way Speed of Light</em><br><br>
+                            The core problem in modern physics is that we have never actually measured the speed of light in a single direction; we have only ever measured the "round-trip" speed (c). To measure light from A to B, we need two synchronized clocks, but synchronizing them requires sending a signal, which assumes we already know the speed of that signal.<br><br>
+                            This creates a circular logic loop known as the Einstein Synchrony Convention. Because of this, it is theoretically possible that light travels at different speeds depending on its direction (anisotropy) without violating any known laws of physics. This project identifies the "synchronization loop" as a fundamental, unexplained observation at the heart of relativity.
+                        </div>
+                    </div>
+
+                    <div class="tooltip-container">
+                        <button class="info-btn" aria-label="Bibliography">Sources</button>
+                        <div class="tooltip-content">
+                            <ol style="padding-left: 15px; margin-top: 5px;">
+                                <li style="margin-bottom: 8px;"><strong>Muller, D. [Veritasium]. (2020)</strong>. <em>Why No One Has Measured the Speed of Light [Video].</em><br><span style="color: #6b7280; font-size: 0.8rem;">Visual analogy of the paradox and clock synchronization.</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Einstein, A. (1905)</strong>. <em>On the electrodynamics of moving bodies. Annalen der Physik.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Foundational text where Einstein admits the one-way speed is a "stipulation".</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Lewis, G. F., & Barnes, L. A. (2021)</strong>. <em>The one-way speed of light and the Milne universe.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Explores cosmological impact of anisotropy (CMB).</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Reichenbach, H. (1958)</strong>. <em>The Philosophy of Space and Time.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Formal proof for the "conventionality of simultaneity".</span></li>
+                                <li style="margin-bottom: 8px;"><strong>O’Dowd, M. [PBS Space Time]. (2020)</strong>. <em>The Speed of Light is NOT About Light.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Explains 'c' as the speed of causality.</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Will, C. M. (1992)</strong>. <em>Clock synchronization and isotropy of the one-way speed of light.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Discusses limits of using GPS/satellites to measure speed.</span></li>
+                                <li><strong>Anderson, R. et al. (1998)</strong>. <em>Conventionality of synchrony...</em><br><span style="color: #6b7280; font-size: 0.8rem;">Definitive mathematical proof that experiments are gauge-dependent.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="controls-panel">
+            <p class="explanation-text">
+                This <strong>simulation</strong> demonstrates the epistemological limits of measuring the <strong>one-way speed of light</strong>.
+                Measuring light's one-way speed requires two synchronized clocks, of which the synchronization process also requires exchanges of signals at a known speed, hence measurement is inherently circular.
+            </p>
+
+            <div class="control-group">
+                <div class="speed-readout">
+                    <span class="label">Round-Trip Speed (Mean):</span>
+                    <span class="highlight math-val">$c$</span>
+                </div>
+            </div>
+
+            <div class="control-group active-control">
+                <label for="directionalBias" class="highlight">Directional Bias (Anisotropy)</label>
+                <div class="slider-container">
+                    <input type="range" id="directionalBias" min="-0.99" max="0.99" value="0" step="0.01">
+                </div>
+                <div class="bias-values">
+                    <span id="speedRightVal">$c_{\rightarrow}$: $c$</span>
+                    <span id="speedLeftVal">$c_{\leftarrow}$: $c$</span>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button id="resetBtn" class="btn secondary">Reset Clocks</button>
+                <button id="togglePulseBtn" class="btn primary">Send Pulse</button>
+            </div>
+            
+            <p class="explanation-text">
+                Adjusting the <strong>Directional Bias</strong> changes the true physics of the top frame. However, under the standard Einstein Synchrony Convention, the clocks automatically de-synchronize to compensate. Consequently, as demonstrated in the bottom frames, the measured speed of the pulse will mathematically cancel out to a constant 1.0c in all reference frames.
+            </p>
+
+            <div class="actions">
+                <button id="openModalBtn" class="btn secondary">Proposed Measurement Solutions (Or Lack Thereof)</button>
+            </div>
+        </main>
+    </div>
+    
+    <div id="canvas-container">
+        <!-- p5.js canvas will be injected here. We will draw 3 horizontal sections within the single canvas. -->
+    </div>
+    
+    <script src="sketch.js"></script>
+
+    <!-- Modal Overlay -->
+    <div id="solutionsModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Proposed Measurement Solutions</h2>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>For over a century, physicists and philosophers have attempted to devise clever experiments to measure the one-way speed of light and break the circularity of clock synchronization. Every single proposal, without exception, contains a hidden assumption or is thwarted by the very laws of relativity.</p>
+                
+                <table class="solutions-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 24%;">Proposed Solution</th>
+                            <th style="width: 31%;">Methodology</th>
+                            <th style="width: 45%;">Epistemological / Physical Limit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Einstein Synchrony</strong><br><small style="color: #60a5fa;">(Demonstrated in View 1)</small></td>
+                            <td>Use a light signal from Point A to synchronize a clock at Point B. A flash is emitted from clock A at <var>t<sub>0</sub></var>, and clock B registers the arrival, setting its time to <var>t<sub>0</sub> + d/c</var>.</td>
+                            <td><strong>Circularity:</strong> This method inherently assumes that the one-way speed of light is exactly <var>c</var> in order to calibrate the clock at B. You cannot use this method to empirically measure the one-way speed because the synchronization protocol itself mathematically <em>defines</em> the one-way speed as <var>c</var>. This is why the clocks in View 1 de-synchronize.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Slow Clock Transport</strong></td>
+                            <td>Synchronize two clocks together at Point A, then physically move one of the clocks infinitesimally slowly to Point B to avoid using light for synchronization. By moving at speed <var>v &rarr; 0</var>, one attempts to render kinematic time dilation negligible.</td>
+                            <td><strong>Time Dilation Anisotropy:</strong> While the immediate time dilation effect approaches zero as you slow down, the <em>time required</em> for the journey approaches infinity. When integrated over the entire trip, the accumulated time dilation introduces a strictly non-zero time shift. Correcting for this shift requires already knowing the one-way speed of light, permanently sealing the circularity loop.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>High-Speed Observation</strong><br><small style="color: #60a5fa;">(Demonstrated in Views 2 & 3)</small></td>
+                            <td>Avoid endpoint clocks entirely. Instead, use an independent high-speed camera offset from the path to visually record a light pulse traveling across a measured distance. By analyzing the camera frames, one expects to directly calculate the geometric speed of the pulse.</td>
+                            <td><strong>Observational Signal Lag:</strong> For the camera to record the pulse, secondary photons must travel from the pulse's path to the camera's lens. If the speed of light is truly anisotropic, these observation photons will also travel at different speeds depending on their specific angle to the lens. This staggered delay exactly cancels out the underlying anisotropy, projecting a perfect illusion of constant <var>1.0c</var> to the observer (as seen in View 3).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anisotropic Modeling</strong></td>
+                            <td>Assume light is directional (<var>c<sub>&rarr;</sub> &ne; c<sub>&larr;</sub></var>) and hunt for measurable shifts or asymmetries in other physical phenomena, such as particle decay rates, electromagnetic field propagation, or relativistic momentum.</td>
+                            <td><strong>Universal Conspiracy:</strong> Adjusting the one-way speed of light mathematically functions as a purely administrative change to how we label time coordinates. The universe does not care how we label time. Nature's fundamental mechanics (like length contraction and time dilation) warp in perfect, absolute lockstep with the coordinate shift. As a result, no physical experiment can ever detect the shift, because the measuring instruments themselves warp to hide the difference.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
