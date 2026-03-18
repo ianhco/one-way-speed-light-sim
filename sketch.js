@@ -27,8 +27,9 @@ let resetBtn, togglePulseBtn;
 let isAnimating = false;
 
 function setup() {
-    let container = select('#canvas-container');
-    let canvas = createCanvas(container.width, container.height);
+    updateScale();
+    let container = document.getElementById('canvas-container');
+    let canvas = createCanvas(container.clientWidth, container.clientHeight);
     canvas.parent('canvas-container');
     
     // UI bindings
@@ -572,11 +573,36 @@ function drawClock(cx, cy, timeTicks, label, accentColor) {
 }
 
 function windowResized() {
-    let container = select('#canvas-container');
-    resizeCanvas(container.width, container.height);
+    updateScale();
+    let container = document.getElementById('canvas-container');
+    resizeCanvas(container.clientWidth, container.clientHeight);
     calculateLayout();
     
     // Re-center x properties on resize
     clocks[0].x = width/2 - DISTANCE/2;
     clocks[1].x = width/2 + DISTANCE/2;
+}
+
+function updateScale() {
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    let wrapper = document.getElementById('app-wrapper');
+    if (!wrapper) return;
+    
+    if (w > h) {
+        if (w < 1300) {
+            let scaleFactor = w / 1300;
+            wrapper.style.width = '1300px';
+            wrapper.style.height = (h / scaleFactor) + 'px';
+            wrapper.style.transform = `scale(${scaleFactor})`;
+        } else {
+            wrapper.style.width = '100vw';
+            wrapper.style.height = '100vh';
+            wrapper.style.transform = 'none';
+        }
+    } else {
+        wrapper.style.width = '100vw';
+        wrapper.style.height = '100vh';
+        wrapper.style.transform = 'none';
+    }
 }

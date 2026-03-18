@@ -23,13 +23,21 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#app-wrapper {
     display: flex;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+    transform-origin: top left;
 }
 
 #ui-container {
     width: 500px;
+    min-width: 500px;
     height: 100%;
     background: var(--panel-bg);
     backdrop-filter: blur(20px);
@@ -471,4 +479,30 @@ input[type=range]:disabled::-webkit-slider-thumb {
     color: #f87171;
     font-style: normal;
     font-weight: 600;
+}
+
+/* Portrait Overlay */
+#portrait-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(13, 15, 23, 0.5);
+    backdrop-filter: blur(15px);
+    z-index: 99999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+@media (orientation: portrait) {
+    #portrait-overlay {
+        display: flex;
+    }
+    #canvas-container {
+        display: none !important;
+    }
 }

@@ -25,7 +25,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="ui-container">
+    <div id="portrait-overlay">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(12, 12)">
+                <!-- Rotating Phone (Diagonal \) -->
+                <g transform="rotate(-45)">
+                    <rect x="-4" y="-7" width="8" height="14" rx="1.5"></rect>
+                    <!-- Home Button -->
+                    <path d="M0 4.5v.01" stroke-width="2"></path>
+                </g>
+                <!-- Top Right CW Arrow -->
+                <path d="M 0 -9 A 9 9 0 0 1 9 0"></path>
+                <polyline points="11,-3.5 9,0 6, -2"></polyline>
+                <!-- Bottom Left CW Arrow -->
+                <path d="M 0 9 A 9 9 0 0 1 -9 0"></path>
+                <polyline points="-11,3.5 -9,0 -6,2"></polyline>
+            </g>
+        </svg>
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Please Rotate Your Device</h3>
+        <p style="color: #a0aec0; font-size: 0.95rem;">This page requires a landscape viewport.</p>
+    </div>
+
+    <div id="app-wrapper">
+        <div id="ui-container">
         <header>
             <div class="header-title-group">
                 <div>
@@ -102,6 +124,7 @@
     
     <div id="canvas-container">
         <!-- p5.js canvas will be injected here. We will draw 3 horizontal sections within the single canvas. -->
+    </div>
     </div>
     
     <script src="sketch.js"></script>
