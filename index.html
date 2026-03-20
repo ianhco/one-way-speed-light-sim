@@ -58,10 +58,11 @@
                 <div class="header-tools">
                     <div class="tooltip-container">
                         <button class="info-btn" aria-label="Introduction">Concept</button>
-                        <div class="tooltip-content">
+                        <div class="tooltip-content" style="width: 400px;">
                             <em>The Synchrony Convention and the One-Way Speed of Light</em><br><br>
                             The core problem in modern physics is that we have never actually measured the speed of light in a single direction; we have only ever measured the "round-trip" speed (c). To measure light from A to B, we need two synchronized clocks, but synchronizing them requires sending a signal, which assumes we already know the speed of that signal.<br><br>
-                            This creates a circular logic loop known as the Einstein Synchrony Convention. Because of this, it is theoretically possible that light travels at different speeds depending on its direction (anisotropy) without violating any known laws of physics. This project identifies the "synchronization loop" as a fundamental, unexplained observation at the heart of relativity.
+                            This creates a circular logic loop known as the Einstein Synchrony Convention. Because of this, it is theoretically possible that light travels at different speeds depending on its direction (anisotropy) without violating any known laws of physics.<br><br>
+                            <strong>Cosmological Impact:</strong> If the one-way speed of light is completely anisotropic (e.g., instantaneous toward us, and exactly $\frac{1}{2}c$ away from us), our entire understanding of astronomy dramatically shifts. Distant galaxies observed in the night sky might not be billions of years in the past; if light from them reaches us instantly, we are seeing them in absolute real-time! Yet, because the physical dimensions of the universe warp to perfectly cancel out this bias, an isotropic and anisotropic universe remain perfectly observationally indistinguishable.
                         </div>
                     </div>
 
@@ -69,13 +70,16 @@
                         <button class="info-btn" aria-label="Bibliography">Sources</button>
                         <div class="tooltip-content">
                             <ol style="padding-left: 15px; margin-top: 5px;">
-                                <li style="margin-bottom: 8px;"><strong>Muller, D. [Veritasium]. (2020)</strong>. <em>Why No One Has Measured the Speed of Light [Video].</em><br><span style="color: #6b7280; font-size: 0.8rem;">Visual analogy of the paradox and clock synchronization.</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Einstein, A. (1905)</strong>. <em>On the electrodynamics of moving bodies. Annalen der Physik.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Foundational text where Einstein admits the one-way speed is a "stipulation".</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Lewis, G. F., & Barnes, L. A. (2021)</strong>. <em>The one-way speed of light and the Milne universe.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Explores cosmological impact of anisotropy (CMB).</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Reichenbach, H. (1958)</strong>. <em>The Philosophy of Space and Time.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Formal proof for the "conventionality of simultaneity".</span></li>
-                                <li style="margin-bottom: 8px;"><strong>O’Dowd, M. [PBS Space Time]. (2020)</strong>. <em>The Speed of Light is NOT About Light.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Explains 'c' as the speed of causality.</span></li>
-                                <li style="margin-bottom: 8px;"><strong>Will, C. M. (1992)</strong>. <em>Clock synchronization and isotropy of the one-way speed of light.</em><br><span style="color: #6b7280; font-size: 0.8rem;">Discusses limits of using GPS/satellites to measure speed.</span></li>
-                                <li><strong>Anderson, R. et al. (1998)</strong>. <em>Conventionality of synchrony...</em><br><span style="color: #6b7280; font-size: 0.8rem;">Definitive mathematical proof that experiments are gauge-dependent.</span></li>
+                                <li style="margin-bottom: 8px;"><strong>Muller, D. [Veritasium]. (2020)</strong>. <em>Why No One Has Measured the Speed of Light [Video].</em></li>
+                                <li style="margin-bottom: 8px;"><strong>Einstein, A. (1905)</strong>. <em>On the electrodynamics of moving bodies. Annalen der Physik.</em></li>
+                                <li style="margin-bottom: 8px;"><strong>Lewis, G. F., & Barnes, L. A. (2021)</strong>. <em>The one-way speed of light and the Milne universe.</em></li>
+                                <li style="margin-bottom: 8px;"><strong>Reichenbach, H. (1958)</strong>. <em>The Philosophy of Space and Time.</em></li>
+                                <li style="margin-bottom: 8px;"><strong>O’Dowd, M. [PBS Space Time]. (2020)</strong>. <em>The Speed of Light is NOT About Light.</em></li>
+                                <li style="margin-bottom: 8px;"><strong>Will, C. M. (1992)</strong>. <em>Clock synchronization and isotropy of the one-way speed of light.</em></li>
+                                <li style="margin-bottom: 8px;"><strong>Anderson, R. et al. (1998)</strong>. <em>Conventionality of synchrony...</em></li>
+                                <li style="margin-top: 8px;"><strong>Land, K., &amp; Magueijo, J. (2005)</strong>. <em>The axis of evil. Physical Review Letters.</em></li>
+                                <li style="margin-top: 8px;"><strong>Coleman, S., &amp; Glashow, S. L. (1999)</strong>. <em>High-energy tests of Lorentz invariance. Physical Review D.</em></li>
+                                <li style="margin-top: 8px;"><strong>Tinto, M., &amp; Dhurandhar, S. V. (2021)</strong>. <em>Time-Delay Interferometry. Living Reviews in Relativity.</em></li>
                             </ol>
                         </div>
                     </div>
@@ -117,7 +121,7 @@
             </p>
 
             <div class="actions">
-                <button id="openModalBtn" class="btn secondary">Proposed Measurement Solutions (Or Lack Thereof)</button>
+                <button id="openModalBtn" class="btn secondary">Proposed Past & Future Measurement Solutions</button>
             </div>
         </main>
     </div>
@@ -133,7 +137,7 @@
     <div id="solutionsModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Proposed Measurement Solutions</h2>
+                <h2>Proposed Past & Future Measurement Solutions</h2>
                 <button class="close-btn" id="closeModalBtn">&times;</button>
             </div>
             <div class="modal-body">
@@ -170,7 +174,36 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <h3 style="margin-top: 4rem; margin-bottom: 1.5rem; color: #f0f2f5;">Modern & Future Proposals</h3>
+                <table class="solutions-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 24%;">Proposed Solution</th>
+                            <th style="width: 31%;">Methodology</th>
+                            <th style="width: 45%;">Epistemological / Physical Limit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>JWST Deep-Field Cosmology</strong></td>
+                            <td>Use the James Webb Space Telescope to observe the most distant ancient galaxies and the cosmic microwave background (CMB), actively searching for microscopic variances or "axis of evil" anomalies that would suggest light travels faster from one specific absolute direction of the cosmos.</td>
+                            <td><strong>The Observation Trap:</strong> Any visual observation—even peering 13 billion light-years deep into the cosmos—strictly requires photons to physically travel to the telescope's local lens. If the speed of light is anisotropic, the deep-field image theoretically arrives distorted. However, the time-dilation and length-contraction mechanics of the intervening expanding space exactly compensate for the anisotropy, causing the deep-field visuals to appear perfectly isotropic upon arrival.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>High-Energy Cosmic Rays</strong></td>
+                            <td>Analyze ultra-relativistic cosmic rays hitting Earth's atmosphere. Since these particles travel at $99.9999\% c$, any directional variation in the absolute speed of light should theoretically shift their energy cutoffs (like the Greisen–Zatsepin–Kuzmin limit) depending on the absolute direction the cosmic ray arrived from.</td>
+                            <td><strong>Energy-Momentum Isomorphism:</strong> The energy-mass equivalency equations governing cosmic rays ($E=mc^2$) inherently rely on the local directional definition of $c$. If $c$ varies geographically, the underlying quantum fields and particle masses scale symmetrically on a sub-atomic level. A cosmic ray arriving from the "fast" direction will simply have its measurable energy perfectly scaled back by the anisotropic shift in the particle's internal momentum, masking the difference completely.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Advanced Laser Interferometry (LISA)</strong></td>
+                            <td>Deploy the Laser Interferometer Space Antenna (LISA) to measure gravitational waves across millions of miles in deep space. By bouncing lasers between spacecraft arranged in an equilateral triangle, we could theoretically detect microscopic directional variances in how fast the spacetime ripples propagate.</td>
+                            <td><strong>Gauge-Dependent Synchronization:</strong> LISA ultimately requires firing tracking lasers back and forth sequentially to keep its satellite clocks incredibly synchronized (known as Time Delay Interferometry). Because this internal synchronization protocol completely relies on the assumption of a round-trip isotropic light speed to function, the instrument inherently calibrates the anisotropy out of the raw timeline data before the gravitational wave's true directional speed can even be assessed.</td>
+                        </tr>
+                    </tbody>
+                </table>
                 
+
                 <p style="margin-top: 2rem;">
                     Ultimately, the pursuit of measuring the one-way speed of light reveals a profound truth about the architecture of our universe. The constant <var>c</var> is not simply a speed limit for photons; it is the fundamental speed of causality itself. Because the very fabric of space and time—the dilation of clocks and the contraction of rulers—conspires to perfectly mask any directional anisotropy, the choice to define the one-way speed of light as isotropic is precisely that: a choice. It is an epistemological convention that dramatically simplifies our mathematical models of reality, rather than an empirical fact that can ever be extracted from a laboratory measuring device.
                 </p>
